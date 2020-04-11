@@ -1,0 +1,13 @@
+
+
+//displaying the book list view
+ <%for(let i=0; i<nav.lenght; i++){%> //loop through the array
+     <h3><%=books[i].title%></h3>
+     <h4><%=books.[i].author%></h4>
+
+<a href="/books/<%=i%>" class="text-muted">Readmore</a>// giving each readmore aunique id
+
+//<a href="/books/<%=books[i].id%>" class="text-muted">Readmore</a>
+
+
+     <%}%>

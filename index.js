@@ -3,9 +3,15 @@ const app=express();
 app.set('views','./views')
 app.set('view engine,ejs')
 
-const bookRouter=epress.Router();
+const bookRouter=require('./routes/bookRoutes')(nav);
+const adminRouter=require('./routes/adminRouter')(nav);
+
+app.use('/admin',adminRouter);
 app.use('/book',bookRouter);
 
+const nav=[{
+    link:'/books',title:'Books'},
+{link:'/authors',title:'Author'}];
 
 app.get('/',(req,res)=>{
 res.render(
@@ -20,14 +26,7 @@ res.render(
 
 })
 
-bookRouter.route('/') //routes help us capsulate our 
-.get((req,res)=>{
-    res.send('hello word');
-})
-bookRouter.route('/single bool')
-.get((req,res)=>{
-    res.send('am a single book')
-})
+
 
 var server = app.listen(3000, function() {
     console.log('Server started');
